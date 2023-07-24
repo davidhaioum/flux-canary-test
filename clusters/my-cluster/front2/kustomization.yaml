@@ -8,5 +8,6 @@ resources:
   - ir.yaml
   - ip.yaml
   - iua.yaml
+  - svc.yaml
   #- canary.yaml
 
