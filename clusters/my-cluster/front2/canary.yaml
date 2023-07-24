@@ -47,7 +47,7 @@ spec:
       #  url: http://flagger-loadtester.test/gate/halt
       - name: "traffic increase gate"
         type: confirm-traffic-increase
-        url: http://flagger-loadtester.test/gate/halt
+        url: http://flagger-loadtester.test/gate/approve
       - name: "promotion gate"
         type: confirm-promotion
         url: http://flagger-loadtester.test/gate/halt
