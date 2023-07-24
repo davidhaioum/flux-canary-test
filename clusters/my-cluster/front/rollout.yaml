@@ -12,7 +12,7 @@ spec:
         nginx:
           stableIngress: rollouts-demo-stable
       steps:
-      - setWeight: 10
+      - setWeight: 50
       - pause: {}
   revisionHistoryLimit: 2
   selector:
