@@ -6,3 +6,5 @@ metadata:
 spec:
   image: ghcr.io/davidhaioum/front
   interval: 1m
+  secretRef:
+    name: regcred
