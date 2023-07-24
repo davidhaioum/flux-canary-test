@@ -4,5 +4,5 @@ metadata:
   name: front
   namespace: flux-system
 spec:
-  image: localhost:5001/front
+  image: 10.17.1.66:5001/front
   interval: 1m
