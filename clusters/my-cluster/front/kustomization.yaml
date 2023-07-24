@@ -7,3 +7,4 @@ resources:
 - services.yaml
 - ir.yaml
 - ip.yaml
+- iua.yaml
