@@ -6,3 +6,4 @@ resources:
 - rollout.yaml
 - services.yaml
 - ir.yaml
+- ip.yaml
