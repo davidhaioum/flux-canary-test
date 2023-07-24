@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: front
+  namespace: flux-system
+spec:
+  image: localhost:5001/front
+  interval: 1m
