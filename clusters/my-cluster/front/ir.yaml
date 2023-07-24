@@ -4,5 +4,5 @@ metadata:
   name: front
   namespace: flux-system
 spec:
-  image: 10.17.1.66:5001/front
+  image: ghcr.io/davidhaioum/front
   interval: 1m
