@@ -1,0 +1,56 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: podinfo
+  namespace: test
+spec:
+  provider: nginx
+  # deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podinfo
+  # ingress reference
+  ingressRef:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    name: podinfo
+  # HPA reference (optional)
+  autoscalerRef:
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    name: podinfo
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 60
+  service:
+    # ClusterIP port number
+    port: 80
+    # container port number or name
+    targetPort: 9898
+  analysis:
+    # schedule interval (default 60s)
+    interval: 10s # <------ TOUCH THIS
+    # max number of failed metric checks before rollback
+    threshold: 10
+    # max traffic percentage routed to canary
+    # percentage (0-100)
+    maxWeight: 50 # <------ TOUCH THIS
+    # canary increment step
+    # percentage (0-100)
+    stepWeight: 10 # <----- TOUCH THIS
+    # staged promotion
+    stepWeightPromotion: 100
+    webhooks:
+      #- name: "start gate"
+      #  type: confirm-rollout
+      #  url: http://flagger-loadtester.test/gate/halt
+      - name: "traffic increase gate"
+        type: confirm-traffic-increase
+        url: http://flagger-loadtester.test/gate/halt
+      - name: "promotion gate"
+        type: confirm-promotion
+        url: http://flagger-loadtester.test/gate/halt
+      #- name: "rollback"
+      #  type: rollback
+      #  url: http://flagger-loadtester.test/rollback/close
