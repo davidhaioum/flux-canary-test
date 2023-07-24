@@ -9,5 +9,5 @@ resources:
   - ip.yaml
   - iua.yaml
   - svc.yaml
-  #- canary.yaml
+  - canary.yaml
 
