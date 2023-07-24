@@ -5,5 +5,8 @@ resources:
   - hpa.yaml
   - deployment.yaml
   - ingress.yaml
+  - ir.yaml
+  - ip.yaml
+  - iua.yaml
   # - canary.yaml
 

@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: ghcr.io/davidhaioum/front:5.0.2
+        image: ghcr.io/davidhaioum/front:5.0.2 # {"$imagepolicy": "front:front"} 
         ports:
         - name: http
           containerPort: 8080
