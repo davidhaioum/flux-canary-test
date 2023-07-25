@@ -38,7 +38,7 @@ spec:
     maxWeight: 80 # <------ TOUCH THIS
     # canary increment step
     # percentage (0-100)
-    stepWeight: 25 # <----- TOUCH THIS
+    stepWeight: 10 # <----- TOUCH THIS
     # staged promotion
     stepWeightPromotion: 100
     webhooks:
@@ -50,7 +50,7 @@ spec:
       #  url: http://flagger-loadtester.test/gate/approve
       - name: "promotion gate"
         type: confirm-promotion
-        url: http://flagger-loadtester.test/gate/halt
+        url: http://flagger-loadtester.test/gate/approve
       #- name: "rollback"
       #  type: rollback
       #  url: http://flagger-loadtester.test/rollback/close
