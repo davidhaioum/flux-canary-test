@@ -35,12 +35,12 @@ spec:
     threshold: 10
     # max traffic percentage routed to canary
     # percentage (0-100)
-    maxWeight: 50 # <------ TOUCH THIS
+    maxWeight: 80 # <------ TOUCH THIS
     # canary increment step
     # percentage (0-100)
     stepWeight: 25 # <----- TOUCH THIS
     # staged promotion
-    stepWeightPromotion: 70
+    stepWeightPromotion: 100
     webhooks:
       #- name: "start gate"
       #  type: confirm-rollout
