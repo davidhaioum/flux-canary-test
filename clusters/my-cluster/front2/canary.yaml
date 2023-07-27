@@ -35,7 +35,7 @@ spec:
     threshold: 10
     # max traffic percentage routed to canary
     # percentage (0-100)
-    maxWeight: 80 # <------ TOUCH THIS
+    maxWeight: 20 # <------ TOUCH THIS
     # canary increment step
     # percentage (0-100)
     stepWeight: 10 # <----- TOUCH THIS
@@ -50,7 +50,7 @@ spec:
       #  url: http://flagger-loadtester.test/gate/approve
       - name: "promotion gate"
         type: confirm-promotion
-        url: http://flagger-loadtester.test/gate/approve
+        url: http://flagger-loadtester.test/gate/halt
       #- name: "rollback"
       #  type: rollback
       #  url: http://flagger-loadtester.test/rollback/close
