@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: myshop
-        image: ghcr.io/davidhaioum/myshop:1.0.0 # {"$imagepolicy": "myshop:myshop"} 
+        image: ghcr.io/davidhaioum/myshop:1.1.0 # {"$imagepolicy": "myshop:myshop"} 
         ports:
         - name: http
           containerPort: 3000
