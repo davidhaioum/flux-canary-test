@@ -11,6 +11,13 @@ spec:
       trafficRouting:
         nginx:
           stableIngress: myshop-stable
+          additionalIngressAnnotations:
+            # Enable the sticky session in the Kubernetes Ingress resource
+            nginx.ingress.kubernetes.io/affinity: "cookie"
+            # Specify the name of the required cookie (default: INGRESSCOOKIE).
+            nginx.ingress.kubernetes.io/session-cookie-name: "returnflow-testing"
+            # Specify the time before the cookie expires (in seconds):
+            nginx.ingress.kubernetes.io/session-cookie-max-age: "3600" # 1h
       steps:
       - setWeight: 50
       - pause: {}
