@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: myshop
+spec:
+  replicas: 1
+  strategy:
+    canary:
+      canaryService: myshop-canary
+      stableService: myshop-stable
+      trafficRouting:
+        nginx:
+          stableIngress: myshop-stable
+      steps:
+      - setWeight: 10
+      - pause: {}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: myshop
+  template:
+    metadata:
+      labels:
+        app: myshop
+    spec:
+      containers:
+      - name: myshop
+        image: ghcr.io/davidhaioum/myshop:1.0.0 # {"$imagepolicy": "myshop:myshop"} 
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
+      imagePullSecrets:
+      - name: regcred

@@ -1,0 +1,11 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: myshop
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: myshop
+  policy:
+    semver:
+      range: 1.x.0
