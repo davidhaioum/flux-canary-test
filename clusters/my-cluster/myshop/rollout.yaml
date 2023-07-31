@@ -12,7 +12,7 @@ spec:
         nginx:
           stableIngress: myshop-stable
       steps:
-      - setWeight: 10
+      - setWeight: 99
       - pause: {}
   revisionHistoryLimit: 2
   selector:
