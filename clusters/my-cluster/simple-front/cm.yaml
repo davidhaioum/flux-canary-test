@@ -6,3 +6,4 @@ metadata:
 data:
   MY_BACKEND_ENDPOINT: "http://test.backend"
   NAME: "Website"
+  TEST: "test-reload"
