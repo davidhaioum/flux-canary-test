@@ -36,7 +36,7 @@ spec:
             - configMapRef:
                 name: simple-front-env
             - secretRef:
-                name: simple-front-secrets
+                name: simple-front-secret
           volumeMounts:
             - name: dotenv
               mountPath: /environment
