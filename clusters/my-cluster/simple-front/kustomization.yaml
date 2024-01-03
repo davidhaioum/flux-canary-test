@@ -10,3 +10,4 @@ resources:
   - iua.yaml
   - cm.yaml
   - secret.yaml
+  - deploy.yaml
