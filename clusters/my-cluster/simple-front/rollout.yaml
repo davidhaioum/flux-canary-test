@@ -20,6 +20,9 @@ spec:
       app: simple-front
   template:
     metadata:
+      annotations:
+        configmap.reloader.stakater.com/reload: "simple-front-env"
+        secret.reloader.stakater.com/reload: "simple-front-secret"
       labels:
         app: simple-front
     spec:
