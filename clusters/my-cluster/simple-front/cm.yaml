@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: simple-front-env
+data:
+  MY_BACKEND_API_KEY: "s3cr3t"
+  MY_BACKEND_ENDPOINT: "http://test.backend"
+  NAME: "Website"

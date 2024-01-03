@@ -23,9 +23,26 @@ spec:
       labels:
         app: simple-front
     spec:
+      volumes:
+        - name: dotenv
+          emptyDir: {}
+      initContainers:
+        - name: create-env-file
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - echo "$(env | grep -v 'KUBERNETES_' >> /environment/.env)"
+          envFrom:
+            - configMapRef:
+                name: simple-front-env
+            - secretRef:
+                name: simple-front-secrets
+          volumeMounts:
+            - name: dotenv
+              mountPath: /environment
       containers:
         - name: simple-front
-          image: ghcr.io/davidhaioum/simple-front:main-202401030922-d489f7a # {"$imagepolicy": "simple-front:simple-front"}
+          image: ghcr.io/davidhaioum/simple-front:main-202401030959-4c4253e # {"$imagepolicy": "simple-front:simple-front"}
           ports:
             - name: http
               containerPort: 5000
@@ -46,5 +63,9 @@ spec:
             requests:
               memory: 32Mi
               cpu: 5m
+          volumeMounts:
+            - name: dotenv
+              mountPath: /app/.env
+              subPath: .env
       imagePullSecrets:
         - name: regcred

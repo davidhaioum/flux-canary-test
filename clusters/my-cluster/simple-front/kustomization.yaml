@@ -8,3 +8,5 @@ resources:
   - ir.yaml
   - ip.yaml
   - iua.yaml
+  - cm.yaml
+  - secret.yaml
