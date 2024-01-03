@@ -18,57 +18,7 @@ spec:
   selector:
     matchLabels:
       app: simple-front
-  template:
-    metadata:
-      annotations:
-        configmap.reloader.stakater.com/reload: "simple-front-env"
-        secret.reloader.stakater.com/reload: "simple-front-secret"
-      labels:
-        app: simple-front
-    spec:
-      volumes:
-        - name: dotenv
-          emptyDir: {}
-      initContainers:
-        - name: create-env-file
-          image: busybox
-          command: ["/bin/sh", "-c"]
-          args:
-            - echo "$(env | grep -v 'KUBERNETES_' >> /environment/.env)"
-          envFrom:
-            - configMapRef:
-                name: simple-front-env
-            - secretRef:
-                name: simple-front-secret
-          volumeMounts:
-            - name: dotenv
-              mountPath: /environment
-      containers:
-        - name: simple-front
-          image: ghcr.io/davidhaioum/simple-front:main-202401030959-4c4253e # {"$imagepolicy": "simple-front:simple-front"}
-          ports:
-            - name: http
-              containerPort: 5000
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /healthz/liveness
-              port: 5000
-            initialDelaySeconds: 3
-            periodSeconds: 3
-          readinessProbe:
-            httpGet:
-              path: /healthz/readiness
-              port: 5000
-            initialDelaySeconds: 3
-            periodSeconds: 3
-          resources:
-            requests:
-              memory: 32Mi
-              cpu: 5m
-          volumeMounts:
-            - name: dotenv
-              mountPath: /app/.env
-              subPath: .env
-      imagePullSecrets:
-        - name: regcred
+  workloadRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: simple-front
