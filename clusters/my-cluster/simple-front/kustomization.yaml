@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: simple-front
 resources:
   - ingress.yaml
-  - rollout.yaml
   - services.yaml
   - ir.yaml
   - ip.yaml
